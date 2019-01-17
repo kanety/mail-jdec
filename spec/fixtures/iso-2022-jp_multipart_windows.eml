@@ -1,0 +1,24 @@
+From: =?ISO-2022-JP?B?GyRCOjk9UD9NGyhC?= <test@example.com>
+To: =?ISO-2022-JP?B?GyRCMDhAaBsoQg==?= <test@example.com>
+Subject: =?ISO-2022-JP?B?GyRCJUYlOSVIJWEhPCVrJE43b0w+LSEtIi0jGyhJMTIzNDUbKEI=?=
+Content-Type: multipart/mixed;
+ boundary="--==_mimepart"
+
+----==_mimepart
+Content-Type: text/plain;
+ charset=iso-2022-jp
+Content-Transfer-Encoding: 7bit
+
+$B%F%9%H%a!<%k$NK\J8-!-"-#(I12345(B
+
+
+----==_mimepart
+Content-Type: application/octet-stream;
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename="=?ISO-2022-JP?B?GyRCRTpJVSVVJSElJCVrLSEtIi0jGyhJMTIzNDUbKEIuZGF0?="
+
+AAAAAAA=
+
+
+----==_mimepart--

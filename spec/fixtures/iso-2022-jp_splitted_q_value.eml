@@ -1,0 +1,9 @@
+From: =?ISO-2022-JP?Q?=1B$B:9=3DP?M=1B(B?= <test@example.com>
+To: =?ISO-2022-JP?Q?=1B$B08@h=1B(B?= <test@example.com>
+Subject: test: =?ISO-2022-JP?Q?=1B$B%F%9%H%a!?=
+ =?ISO-2022-JP?Q?<%k$N7oL>=1B(B?=
+Content-Type: text/plain;
+ charset=iso-2022-jp
+Content-Transfer-Encoding: 7bit
+
+テストメールの本文

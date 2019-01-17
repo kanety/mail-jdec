@@ -1,0 +1,28 @@
+From: =?ISO-2022-JP?B?GyRCOjk9UD9NGyhC?= <test@example.com>
+To: =?ISO-2022-JP?B?GyRCMDhAaBsoQg==?= <test@example.com>
+Subject: =?ISO-2022-JP?B?GyRCJUYlOSVIJWEhPCVrJE43b0w+GyhC?=
+Content-Type: multipart/mixed;
+ boundary="--==_mimepart";
+ charset=iso-2022-jp
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart
+Content-Type: text/plain;
+ charset=iso-2022-jp
+Content-Transfer-Encoding: base64
+
+GyRCJUYlOSVIJWEhPCVrJE5LXEo4GyhC
+
+
+----==_mimepart
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename*0*=iso-2022-jp''"%1B%24BE%3AIU%25U%25%21%25"
+ filename*1="%24%25k%1B%28B.dat"
+
+AAAAAAA=
+
+
+----==_mimepart--

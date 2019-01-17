@@ -1,0 +1,22 @@
+From: 差出人 <test@example.com>
+To: 宛先 <test@example.com>
+Subject: テストメールの件名
+Content-Type: multipart/mixed;
+ boundary="--==_mimepart"
+
+
+----==_mimepart
+Content-Transfer-Encoding: 7bit
+
+テストメールの本文
+
+
+----==_mimepart
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename="添付ファイル.txt"
+
+AAAAAAA=
+
+
+----==_mimepart--

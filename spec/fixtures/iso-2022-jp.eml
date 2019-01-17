@@ -1,0 +1,7 @@
+From: 差出人 <test@example.com>
+To: 宛先 <test@example.com>
+Cc: 宛先CC1 <test1@example.com>, 宛先CC2 <test2@example.com>
+Bcc: 宛先BCC1 <test1@example.com>, 宛先CC2 <test2@example.com>
+Subject: テストメールの件名
+
+テストメールの本文
