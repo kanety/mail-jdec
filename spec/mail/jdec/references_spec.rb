@@ -3,7 +3,7 @@ describe Mail::Jdec do
     Mail::Jdec.enable
   end
 
-  it 'decodes references splitted by comma' do
+  it 'handles references splitted by comma' do
     mail = Mail.read("spec/fixtures/references_splitted_comma.eml")
     expect(mail.references.size).to eq(2)
   end
