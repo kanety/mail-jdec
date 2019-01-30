@@ -54,5 +54,10 @@ describe Mail::Jdec do
       expect(mail.subject).to include("テストメールの件名")
       expect(mail.decoded).to include("テストメールの本文")
     end
+
+    it 'does not decode if content type is not text' do
+      mail = Mail.read("spec/fixtures/valid/attachment_rfc822.eml")
+      expect(mail.parts[1].decoded).not_to include("添付メールの本文")
+    end
   end
 end

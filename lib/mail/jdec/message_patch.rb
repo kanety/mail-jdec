@@ -4,7 +4,7 @@ module Mail
       def decoded
         decoded = super
 
-        if Jdec.enabled? && (!has_content_type? || (!has_charset? && !attachment? && !multipart?))
+        if Jdec.enabled? && (!has_content_type? || (text? && !has_charset? && !attachment? && !multipart?))
           detected = Detector.detect(decoded)
           if detected && detected[:type] == :text
             charset = detected[:encoding].downcase
