@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.3
+
+* Fix decoding of quoted printable with space.
+
 ## 1.0.2
 
 * Don't run auto-detection if content type is not text.
