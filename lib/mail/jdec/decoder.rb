@@ -45,7 +45,7 @@ module Mail
               bytes = content.scan(/\=\?([^?]+)\?([QB])\?([^?]*?)\?\=/mi).map do |_, encoding, encoded|
                 case encoding
                 when *B_VALUES then Mail::RubyVer.decode_base64(encoded)
-                when *Q_VALUES then Mail::Encodings::QuotedPrintable.decode(encoded)
+                when *Q_VALUES then Mail::Encodings::QuotedPrintable.decode(encoded.gsub(/_/, '=20').sub(/\=$/, ''))
                 end
               end.join('')
               Mail::Encodings.transcode_charset(bytes, charset)

@@ -1,0 +1,8 @@
+From: test <test@example.com>
+To: test <test@example.com>
+Subject: =?UTF-8?Q?test_mail_=E4=BB=B6=E5=90=8D?=
+Content-Type: text/plain;
+ charset=iso-2022-jp
+Content-Transfer-Encoding: 7bit
+
+テストメールの本文
