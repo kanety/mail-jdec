@@ -16,9 +16,10 @@ GyRCJUYlOSVIJWEhPCVrJE5LXEo4GyhC
 
 
 ----==_mimepart
-Content-Type: ;
- name="=?ISO-2022-JP?B?GyRCRTpJVSVVJSElJCVrGyhCLmRhdA==?="
+Content-Type: application/octet-stream;
+ name==?ISO-2022-JP?B?GyRCRTpJVSVVJSElJCVrGyhCLmRhdA==?=
 Content-Transfer-Encoding: base64
+Content-Disposition: attachment
 
 AAAAAAA=
 

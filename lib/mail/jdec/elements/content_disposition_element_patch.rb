@@ -2,16 +2,20 @@ module Mail
   module Jdec
     module ContentDispositionElementPatch
       def initialize(string)
+        if Jdec.enabled?
+          # Remove extra trailing semicolon
+          string = string.gsub(/;+$/, '')
+          # Handles filename=test
+          string = string.gsub(/filename\s*=\s*([^"]+?)\s*(;|$)/im) { %Q|filename="#{$1}"#{$2}| }
+          # Handles filename=""test""
+          string = string.gsub(/filename\s*=\s*"+([^"]+?)"+\s*(;|$)/im) { %Q|filename="#{$1}"#{$2}| }
+        end
+
         super
       rescue Mail::Field::ParseError => e
         if Jdec.enabled?
-          value = Jdec::Decoder.force_utf8(string)
-          if (matched = value.match(/^\s*attachment\s*;\s*(.+)/im))
-            @disposition_type = 'attachment'
-            @parameters = [{ filename: matched[1].gsub(/(\r\n|\r|\n)\s/, '') }]
-          else
-            raise e
-          end
+          @disposition_type = 'attachment'
+          @parameters = ['filename' => Jdec::Decoder.force_utf8(string)]
         else
           raise e
         end

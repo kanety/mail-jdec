@@ -16,11 +16,10 @@ GyRCJUYlOSVIJWEhPCVrJE5LXEo4GyhC
 
 
 ----==_mimepart
-Content-Type: application/octet-stream
+Content-Type: application/octet-stream;
+ name=""=?ISO-2022-JP?B?GyRCRTpJVSVVJSElJCVrGyhCLmRhdA==?=""
 Content-Transfer-Encoding: base64
-Content-Disposition: attachment;
- filename*0*=iso-2022-jp''"%1B%24BE%3AIU%25U%25%21%25"
- filename*1="%24%25k%1B%28B.dat"
+Content-Disposition: attachment
 
 AAAAAAA=
 

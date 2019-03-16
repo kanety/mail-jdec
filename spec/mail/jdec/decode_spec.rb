@@ -3,9 +3,9 @@ describe Mail::Jdec do
     Mail::Jdec.enable
   end
 
-  context 'mail lacks Content-Type' do
+  context 'no charset' do
     it 'decodes iso-2022-jp' do
-      mail = Mail.read("spec/fixtures/iso-2022-jp.eml")
+      mail = Mail.read("spec/fixtures/decode/iso-2022-jp.eml")
 
       expect(mail[:from].decoded).to include("差出人")
       expect(mail[:to].decoded).to include("宛先")
@@ -16,15 +16,15 @@ describe Mail::Jdec do
     end
 
     it 'decodes iso-2022-jp multipart' do
-      mail = Mail.read("spec/fixtures/iso-2022-jp_multipart.eml")
-  
+      mail = Mail.read("spec/fixtures/decode/iso-2022-jp_multipart.eml")
+
       expect(mail.parts[0].decoded).to include("テストメールの本文")
       expect(mail.parts[1].filename).to include("添付ファイル")
     end
 
     it 'does not decode if disabled' do
       Mail::Jdec.disable
-      mail = Mail.read("spec/fixtures/iso-2022-jp.eml")
+      mail = Mail.read("spec/fixtures/decode/iso-2022-jp.eml")
 
       expect(mail[:from].decoded).not_to include("差出人")
       expect(mail[:to].decoded).not_to include("宛先")
@@ -35,9 +35,9 @@ describe Mail::Jdec do
     end
   end
 
-  context 'valid mails' do
+  context 'known charset' do
     it 'decodes iso-2022-jp' do
-      mail = Mail.read("spec/fixtures/valid/iso-2022-jp_multipart.eml")
+      mail = Mail.read("spec/fixtures/decode/valid/iso-2022-jp_multipart.eml")
 
       expect(mail[:from].decoded).to include("差出人")
       expect(mail[:to].decoded).to include("宛先")
@@ -47,7 +47,7 @@ describe Mail::Jdec do
     end
 
     it 'decodes shift_jis' do
-      mail = Mail.read("spec/fixtures/valid/shift_jis.eml")
+      mail = Mail.read("spec/fixtures/decode/valid/shift_jis.eml")
 
       expect(mail[:from].decoded).to include("差出人")
       expect(mail[:to].decoded).to include("宛先")
@@ -56,8 +56,19 @@ describe Mail::Jdec do
     end
 
     it 'does not decode if content type is not text' do
-      mail = Mail.read("spec/fixtures/valid/attachment_rfc822.eml")
+      mail = Mail.read("spec/fixtures/decode/valid/attachment_rfc822.eml")
       expect(mail.parts[1].decoded).not_to include("添付メールの本文")
+    end
+  end
+
+  context 'preferred encoding' do
+    it 'decodes with preferred encoding' do
+      mail = Mail.read("spec/fixtures/decode/iso-2022-jp_multipart_windows.eml")
+
+      chars = "①②③ｱｲｳｴｵ"
+      expect(mail.subject).to include(chars)
+      expect(mail.parts[0].decoded).to include(chars)
+      expect(mail.parts[1].filename).to include(chars)
     end
   end
 end

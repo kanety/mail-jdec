@@ -3,11 +3,27 @@ module Mail
     module ContentTypeElementPatch
       def initialize(string)
         if Jdec.enabled?
-          # Handles ; name=
-          string = string.gsub(/^\s*;?\s*name=(.+)$/im) { "application/octet-stream; name=#{$1}" }
+          # Remove extra trailing semicolon
+          string = string.gsub(/;+$/, '')
+          # Handles name=test
+          string = string.gsub(/name\s*=\s*([^"]+?)\s*(;|$)/im) { %Q|name="#{$1}"#{$2}| }
+          # Handles name=""test""
+          string = string.gsub(/name\s*=\s*"+([^"]+?)"+\s*(;|$)/im) { %Q|name="#{$1}"#{$2}| }
+          # Handles text; name=test
+          string = string.gsub(/^\s*([^\/]+)\s*;\s*name\s*=\s*(.+)$/im) { "#{$1}/unknown; name=#{$2}" }
+          # Handles ; name=test
+          string = string.gsub(/^\s*;?\s*name\s*=\s*(.+)$/im) { "application/octet-stream; name=#{$1}" }
         end
 
         super
+      rescue Mail::Field::ParseError => e
+        if Jdec.enabled?
+          @main_type = 'application'
+          @sub_type = 'octet-stream'
+          @parameters = ['name' => Jdec::Decoder.force_utf8(string)]
+        else
+          raise e
+        end
       end
     end
   end
