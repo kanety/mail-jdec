@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 1.0.4
+
+* Sanitize some wrong parameters for content type and content disposition.
+* Sanitize unescaped characters for RFC2231 filename.
+* Strip null bytes from decoded string.
+* Decode unicode-1-1-utf-7.
+* Fallback parser errors for date and addresses.
+* Fallback unknown encoding errors for body.
+* Sort filename parameters by counter number.
+
 ## 1.0.3
 
 * Fix decoding of quoted printable with space.
