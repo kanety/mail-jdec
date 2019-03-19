@@ -11,6 +11,21 @@ module Mail
         end
         super
       end
+
+      def transcode_charset(str, from_encoding, to_encoding = Encoding::UTF_8)
+        if Jdec.enabled?
+          case from_encoding.to_s.downcase
+          when 'unicode-1-1-utf-7'
+            str = Decoder.decode_utf7(str).encode(to_encoding, undef: :replace, invalid: :replace)
+          else
+            str = super
+          end
+          str.strip! if to_encoding.to_s.downcase == 'utf-8'
+          str
+        else
+          super
+        end
+      end
     end
   end
 end

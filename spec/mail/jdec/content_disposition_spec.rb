@@ -14,6 +14,17 @@ describe Mail::Jdec do
       expect(mail.parts[1].filename).to eq("添付ファイル.dat")
     end
 
+    it 'strips null bytes' do
+      mail = Mail.read("spec/fixtures/content_disposition/content_disposition_null_bytes.eml")
+      expect(mail.parts[1].filename).to eq("添付ファイル.dat")
+    end
+
+    it 'handles unescaped chars in filename' do
+      mail = Mail.read("spec/fixtures/content_disposition/content_disposition_unescaped_chars.eml")
+      expect(mail.parts[1].filename).to eq("()<>@,;:\\\"/[]?=.dat")
+      expect(mail.parts[2].filename).to eq("()<>@,;:\\\"/[]?=()<>@,;:\\\"/[]?=.dat")
+    end
+
     it 'adds necessary quotation' do
       mail = Mail.read("spec/fixtures/content_disposition/content_disposition_wo_quote.eml")
       expect(mail.parts[1].filename).to eq("添付ファイル.dat")

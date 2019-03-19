@@ -9,6 +9,9 @@ module Mail
           string = string.gsub(/filename\s*=\s*([^"]+?)\s*(;|$)/im) { %Q|filename="#{$1}"#{$2}| }
           # Handles filename=""test""
           string = string.gsub(/filename\s*=\s*"+([^"]+?)"+\s*(;|$)/im) { %Q|filename="#{$1}"#{$2}| }
+          # Escape tspecial chars in RFC2231 filename
+          string = string.gsub(/filename\*(\d*)(\*?)\s*=\s*(\S+?)'(\S*)'(\S+)(;|$)/i) { %Q|filename*#{$1}#{$2}=#{$3}'#{$4}'#{Escaper.escape($5)}#{$6}| }
+          string = string.gsub(/filename\*(\d*)(\*?)\s*=\s*(\S+)(;|$)/i) { %Q|filename*#{$1}#{$2}=#{Escaper.escape($3)}#{$4}| }
         end
 
         super
@@ -18,6 +21,15 @@ module Mail
           @parameters = ['filename' => Jdec::Decoder.force_utf8(string)]
         else
           raise e
+        end
+      end
+    end
+
+    module Escaper
+      def self.escape(str)
+        require 'cgi'
+        str.gsub(/[#{Regexp.escape(%Q|()<>@,;:\\"/[]?=|)}]/) do |c|
+          CGI.escape(c)
         end
       end
     end

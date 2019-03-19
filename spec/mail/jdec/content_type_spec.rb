@@ -19,6 +19,12 @@ describe Mail::Jdec do
       expect(mail.parts[1].filename).to eq("添付ファイル.dat")
     end
 
+    it 'removes unnecessary spacing for charsets' do
+      mail = Mail.read("spec/fixtures/content_type/content_type_charset_spacing.eml")
+      expect(mail.mime_type).to eq("text/plain")
+      expect(mail.charset).to eq("iso-2022-jp")
+    end
+
     it 'adds unknown if no sub type provided' do
       mail = Mail.read("spec/fixtures/content_type/content_type_wo_sub_type.eml")
       expect(mail.parts[1].filename).to eq("添付ファイル.dat")

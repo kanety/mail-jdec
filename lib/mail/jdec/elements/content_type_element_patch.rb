@@ -5,6 +5,8 @@ module Mail
         if Jdec.enabled?
           # Remove extra trailing semicolon
           string = string.gsub(/;+$/, '')
+          # Remove unnecessary space
+          string = string.gsub(/;\s*charset\s+=\s+/i, '; charset=')
           # Handles name=test
           string = string.gsub(/name\s*=\s*([^"]+?)\s*(;|$)/im) { %Q|name="#{$1}"#{$2}| }
           # Handles name=""test""

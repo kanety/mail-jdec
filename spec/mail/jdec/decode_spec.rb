@@ -71,4 +71,13 @@ describe Mail::Jdec do
       expect(mail.parts[1].filename).to include(chars)
     end
   end
+
+  context 'unicode-1-1-utf-7' do
+    it 'decodes unicode-1-1-utf-7' do
+      mail = Mail.read("spec/fixtures/decode/unicode-1-1-utf-7.eml")
+
+      expect(mail.subject).to include("テストメールの件名")
+      expect(mail.decoded).to include("テストメールの本文")
+    end
+  end
 end

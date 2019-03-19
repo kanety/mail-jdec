@@ -17,6 +17,16 @@ module Mail
         def force_utf8(str)
           str.dup.force_encoding('utf-8').encode('utf-8', invalid: :replace, undef: :replace)
         end
+
+        def decode_utf7(str)
+          str.gsub(/\+([^-]+)?-/n) do
+            if $1
+              ($1.tr(",", "/") + "===").unpack("m")[0].encode(Encoding::UTF_8, Encoding::UTF_16BE)
+            else
+              '+'
+            end
+          end
+        end
       end
     end
 
