@@ -1,52 +1,42 @@
 module Mail
   module Jdec
     module DateFieldPatch
-      def date_time
+      def element
         super
-      rescue ArgumentError, Mail::Field::ParseError => e
+      rescue Mail::Field::ParseError => e
         if Jdec.enabled?
-          begin
-            require 'time'
-            Time.parse(value).to_datetime
-          rescue ArgumentError => e
-            nil
-          end
+          @errors = [name, value, e]
+          @element = nil
         else
           raise e
         end
       end
-    end
-  end
-end
 
-module Mail
-  class DateField < StructuredField
-    def initialize(value = nil, charset = nil)
-      super(CAPITALIZED_FIELD, self.class.normalize_datetime(value), charset)
-    end
-
-    def self.normalize_datetime(string)
-      if Utilities.blank?(string)
-        datetime = ::DateTime.now
-      else
-        stripped = string.to_s.gsub(/\(.*?\)/, '').squeeze(' ')
-        begin
-          datetime = ::DateTime.parse(stripped)
-        rescue ArgumentError => e
-          raise unless 'invalid date' == e.message
+      def date_time
+        if Jdec.enabled?
+          if element
+            begin
+              ::DateTime.parse("#{element.date_string} #{element.time_string}")
+            rescue ArgumentError => e
+              require 'time'
+              begin
+                Time.parse(value).to_datetime
+              rescue ArgumentError => e
+                nil
+              end
+            end
+          else
+            nil
+          end
+        else
+          super
         end
       end
-
-      if datetime
-        datetime.strftime('%a, %d %b %Y %H:%M:%S %z')
-      else
-        string
-      end
     end
   end
 end
 
-klasses = ObjectSpace.each_object(Class).select { |klass| klass < Mail::CommonDate }
+klasses = ObjectSpace.each_object(Class).select { |klass| klass < Mail::CommonDateField }
 klasses.each do |klass|
   unless klass.included_modules.include?(Mail::Jdec::DateFieldPatch)
     klass.prepend Mail::Jdec::DateFieldPatch
