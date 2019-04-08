@@ -20,7 +20,7 @@ module Mail
         def trusty?(detected)
           detected.key?(:type) &&
             detected.key?(:encoding) &&
-            detected[:confidence].to_i > Jdec.autodetect_confidence &&
+            detected[:confidence].to_i >= Jdec.autodetect_confidence &&
             !Jdec.autodetect_skip_charsets.include?(detected[:encoding].downcase)
         end
       end
