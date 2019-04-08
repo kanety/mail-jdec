@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.5
+
+* Force utf-8 when charset is not detected.
+
 ## 1.0.4
 
 * Sanitize some wrong parameters for content type and content disposition.
