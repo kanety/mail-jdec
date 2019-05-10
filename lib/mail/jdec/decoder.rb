@@ -3,7 +3,7 @@ module Mail
     class Decoder
       class << self
         def decode_if_needed(text)
-          return text if text.nil? || !text.ascii_only?
+          return text if text.nil? || text.encoding == Encoding::UTF_8
 
           detected = Detector.detect(text)
           if detected

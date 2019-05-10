@@ -82,6 +82,14 @@ describe Mail::Jdec do
   end
 
   context 'ascii-8bit' do
+    it 'decodes invalid ascii chars' do
+      mail = Mail.read("spec/fixtures/decode/invalid_ascii_chars.eml")
+
+      expect(mail.from.first).to include('test')
+      expect(mail.subject).to include('test subject')
+      expect(mail.decoded).to include('test body')
+    end
+
     it 'decodes ascii-8bit as utf-8' do
       mail = Mail.read("spec/fixtures/decode/valid/ascii-8bit.eml")
 
