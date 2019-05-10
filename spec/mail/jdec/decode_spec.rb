@@ -22,6 +22,17 @@ describe Mail::Jdec do
       expect(mail.parts[1].filename).to include("添付ファイル")
     end
 
+    it 'decodes utf-8' do
+      mail = Mail.read("spec/fixtures/decode/utf-8.eml")
+
+      expect(mail[:from].decoded).to include("差出人")
+      expect(mail[:to].decoded).to include("宛先")
+      expect(mail[:cc].decoded).to include("宛先CC")
+      expect(mail[:bcc].decoded).to include("宛先BCC")
+      expect(mail.subject).to include("テストメールの件名")
+      expect(mail.decoded).to include("テストメールの本文")
+    end
+
     it 'does not decode if disabled' do
       Mail::Jdec.disable
       mail = Mail.read("spec/fixtures/decode/iso-2022-jp.eml")

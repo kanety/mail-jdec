@@ -28,7 +28,7 @@ module Mail
 
     self.enable
     self.autodetect_confidence = 50
-    self.autodetect_skip_charsets = %w(utf-8 iso-8859-1)
+    self.autodetect_skip_charsets = %w()
     self.preferred_charsets = {
       'iso-2022-jp' => 'cp50221',
       'iso-2022-jp-1' => 'cp50221',
