@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.0.7
+
+* Force us-ascii when header's charset is not detected.
+* Make autodetect_skip_charsets empty by default.
+
 ## 1.0.6
 
 * Fix decoding for invalid ascii characters in mail header.
