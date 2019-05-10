@@ -6,9 +6,12 @@ module Mail
           return text if text.nil? || text.encoding == Encoding::UTF_8
 
           detected = Detector.detect(text)
+
           if detected
             charset = detected[:encoding].to_s
-            text = Mail::Encodings.transcode_charset(text.dup.force_encoding(charset), charset)
+            text = Mail::Encodings.transcode_charset(text.dup.force_encoding(charset), charset, 'utf-8')
+          else
+            text = Mail::Encodings.transcode_charset(text, text.encoding, 'us-ascii')
           end
 
           text
