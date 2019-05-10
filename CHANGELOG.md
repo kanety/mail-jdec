@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.6
+
+* Fix decoding for invalid ascii characters in mail header.
+
 ## 1.0.5
 
 * Force utf-8 when charset is not detected.
