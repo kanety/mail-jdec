@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.8
+
+* Prefer utf-8 to us-ascii for header's charset.
+
 ## 1.0.7
 
 * Force us-ascii when header's charset is not detected.
