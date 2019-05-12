@@ -11,7 +11,7 @@ module Mail
             charset = detected[:encoding].to_s
             text = Mail::Encodings.transcode_charset(text.dup.force_encoding(charset), charset, 'utf-8')
           else
-            text = Mail::Encodings.transcode_charset(text, text.encoding, 'us-ascii')
+            text = Mail::Encodings.transcode_charset(text, text.encoding, 'utf-8')
           end
 
           text
