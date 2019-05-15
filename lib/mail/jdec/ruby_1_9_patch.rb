@@ -20,7 +20,10 @@ module Mail
           else
             str = super
           end
-          str.strip! if to_encoding.to_s.downcase == 'utf-8'
+          if to_encoding.to_s.downcase == 'utf-8'
+            str.gsub!(/^\x00+/, '')
+            str.gsub!(/\x00+$/, '')
+          end
           str
         else
           super
