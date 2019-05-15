@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.9
+
+* Strip only null bytes.
+
 ## 1.0.8
 
 * Prefer utf-8 to us-ascii for header's charset.
