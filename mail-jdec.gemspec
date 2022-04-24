@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Mail::Jdec::VERSION
   spec.authors       = ["Yoshikazu Kaneta"]
   spec.email         = ["kaneta@sitebridge.co.jp"]
-  spec.summary       = %q{A mail patch for decoding some inproper mails}
-  spec.description   = %q{A mail patch for decoding some inproper mails}
+  spec.summary       = %q{A mail patch for decoding some improper mails}
+  spec.description   = %q{A mail patch for decoding some improper mails}
   spec.homepage      = "https://github.com/kanety/mail-jdec"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }

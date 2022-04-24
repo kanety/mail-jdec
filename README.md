@@ -1,6 +1,6 @@
 # Mail::Jdec
 
-A mail patch for decoding some inproper mails.
+A mail patch for decoding some improper mails.
 
 ## Dependencies
 
