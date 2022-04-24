@@ -1,6 +1,6 @@
 .bundle/
-.project
 Gemfile.lock
+gemfiles/*.lock
 coverage/
 pkg/
 tmp/
