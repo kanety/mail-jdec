@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.10
+
+* Fix mail version to < 2.8.0.
+
 ## 1.0.9
 
 * Strip only null bytes.
