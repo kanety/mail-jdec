@@ -17,6 +17,10 @@ module Mail
       def errors
         @errors
       end
+
+      def address_list
+        element
+      end
     end
   end
 end
