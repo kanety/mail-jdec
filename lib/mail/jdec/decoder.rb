@@ -5,7 +5,7 @@ module Mail
     class Decoder
       class << self
         def decode_if_needed(text)
-          return text if text.nil? || text.encoding == Encoding::UTF_8
+          return text if text.nil? || !text.respond_to?(:encoding) || text.encoding == Encoding::UTF_8
 
           detected = Detector.detect(text)
 
