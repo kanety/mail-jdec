@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module Mail
   module Jdec
     class Decoder
       class << self
         def decode_if_needed(text)
-          return text if text.nil? || text.encoding == Encoding::UTF_8
+          return text if text.nil? || !text.respond_to?(:encoding) || text.encoding == Encoding::UTF_8
 
           detected = Detector.detect(text)
 
@@ -57,7 +59,7 @@ module Mail
             if content =~ ENCODED_VALUE
               bytes = content.scan(/\=\?([^?]+)\?([QB])\?([^?]*?)\?\=/mi).map do |_, encoding, encoded|
                 case encoding
-                when *B_VALUES then Mail::RubyVer.decode_base64(encoded)
+                when *B_VALUES then Mail::Utilities.decode_base64(encoded)
                 when *Q_VALUES then Mail::Encodings::QuotedPrintable.decode(encoded.gsub(/_/, '=20').sub(/\=$/, ''))
                 end
               end.join('')

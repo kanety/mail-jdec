@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "mail", ">= 2.7.1", "< 2.8.0"
+  spec.add_dependency "mail", ">= 2.8.1"
   spec.add_dependency "charlock_holmes", ">= 0.7.0"
 
   spec.add_development_dependency "rake"

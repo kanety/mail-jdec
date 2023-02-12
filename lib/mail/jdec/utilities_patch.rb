@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Mail
   module Jdec
-    module Ruby19Patch
+    module UtilitiesPatch
       def pick_encoding(charset)
         if Jdec.enabled?
           Jdec.preferred_charsets.each do |from, to|
@@ -33,6 +35,6 @@ module Mail
   end
 end
 
-unless Mail::Ruby19.singleton_class.included_modules.include?(Mail::Jdec::Ruby19Patch)
-  Mail::Ruby19.singleton_class.prepend Mail::Jdec::Ruby19Patch
+unless Mail::Utilities.singleton_class.included_modules.include?(Mail::Jdec::UtilitiesPatch)
+  Mail::Utilities.singleton_class.prepend Mail::Jdec::UtilitiesPatch
 end
