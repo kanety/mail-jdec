@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.1.1
+
+* Support charset detection including message parts.
+
 ## 1.1.0
 
 * Change supported mail version to 2.8.
