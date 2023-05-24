@@ -13,6 +13,7 @@ module Mail
       attr_reader :enabled
       attr_accessor :autodetect_confidence
       attr_accessor :autodetect_skip_charsets
+      attr_accessor :mime_types_for_autodetect
       attr_accessor :preferred_charsets
 
       def enabled?
@@ -31,6 +32,7 @@ module Mail
     self.enable
     self.autodetect_confidence = 50
     self.autodetect_skip_charsets = %w()
+    self.mime_types_for_autodetect = [%r{^text/}, 'message/delivery-status', 'message/disposition-notification']
     self.preferred_charsets = {
       'iso-2022-jp' => 'cp50221',
       'iso-2022-jp-1' => 'cp50221',

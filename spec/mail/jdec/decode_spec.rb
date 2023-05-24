@@ -108,4 +108,30 @@ describe Mail::Jdec do
       expect(mail.decoded).to include('test body')
     end
   end
+
+  context 'mime types' do
+    it 'decodes text/plain' do
+      mail = Mail.read("spec/fixtures/decode/mime_types/text_plain.eml")
+
+      expect(mail.decoded).to include("テストメールの本文")
+    end
+
+    it 'decodes text/html' do
+      mail = Mail.read("spec/fixtures/decode/mime_types/text_html.eml")
+
+      expect(mail.decoded).to include("テストメールの本文")
+    end
+
+    it 'decodes message/delivery_status' do
+      mail = Mail.read("spec/fixtures/decode/mime_types/message_delivery_status.eml")
+
+      expect(mail.decoded).to include("テストメールの本文")
+    end
+
+    it 'does not decode message/rfc822' do
+      mail = Mail.read("spec/fixtures/decode/mime_types/message_rfc822.eml")
+
+      expect(mail.decoded).not_to include("テストメールの本文")
+    end
+  end
 end

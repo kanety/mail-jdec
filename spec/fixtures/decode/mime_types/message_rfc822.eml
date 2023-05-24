@@ -1,0 +1,11 @@
+From: test <test@example.com>
+To: test <test@example.com>
+Subject: test
+Content-Type: message/rfc822;
+
+From: test <test@example.com>
+To: test <test@example.com>
+Subject: test
+Content-Type: message/delivery-status;
+
+テストメールの本文
