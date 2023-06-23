@@ -1,0 +1,8 @@
+From: test <test@example.com>
+To: test <test@example.com>
+Subject: subject
+References: <ref1@example.com> <ref2@ex
+ ample
+	.com>
+
+mail body

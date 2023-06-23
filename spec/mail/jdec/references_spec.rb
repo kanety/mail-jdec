@@ -8,5 +8,10 @@ describe Mail::Jdec do
       mail = Mail.read("spec/fixtures/references/references_splitted_comma.eml")
       expect(mail.references.size).to eq(2)
     end
+
+    it 'removes tab characters in references header' do
+      mail = Mail.read("spec/fixtures/references/tab_char.eml")
+      expect(mail.references.size).to eq(2)
+    end
   end
 end
