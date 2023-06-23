@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.1.2
+
+* Remove tab characters in references header.
+
 ## 1.1.1
 
 * Support charset detection including message parts.
