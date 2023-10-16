@@ -14,6 +14,4 @@ module Mail
   end
 end
 
-unless Mail::Encodings.singleton_class.included_modules.include?(Mail::Jdec::EncodingsPatch)
-  Mail::Encodings.singleton_class.prepend Mail::Jdec::EncodingsPatch
-end
+Mail::Encodings.singleton_class.prepend Mail::Jdec::EncodingsPatch

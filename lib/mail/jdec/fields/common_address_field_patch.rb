@@ -27,7 +27,5 @@ end
 
 klasses = ObjectSpace.each_object(Class).select { |klass| klass < Mail::CommonAddressField }
 klasses.each do |klass|
-  unless klass.included_modules.include?(Mail::Jdec::CommonAddressFieldPatch)
-    klass.prepend Mail::Jdec::CommonAddressFieldPatch
-  end
+  klass.prepend Mail::Jdec::CommonAddressFieldPatch
 end

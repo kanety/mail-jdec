@@ -16,6 +16,4 @@ module Mail
   end
 end
 
-unless Mail::Body.included_modules.include?(Mail::Jdec::BodyPatch)
-  Mail::Body.prepend Mail::Jdec::BodyPatch
-end
+Mail::Body.prepend Mail::Jdec::BodyPatch

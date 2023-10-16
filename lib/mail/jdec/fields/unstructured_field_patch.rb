@@ -11,6 +11,4 @@ module Mail
   end
 end
 
-unless Mail::UnstructuredField.included_modules.include?(Mail::Jdec::UnstructuredFieldPatch)
-  Mail::UnstructuredField.prepend Mail::Jdec::UnstructuredFieldPatch
-end
+Mail::UnstructuredField.prepend Mail::Jdec::UnstructuredFieldPatch

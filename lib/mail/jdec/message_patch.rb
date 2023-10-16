@@ -41,6 +41,4 @@ module Mail
   end
 end
 
-unless Mail::Message.included_modules.include?(Mail::Jdec::MessagePatch)
-  Mail::Message.prepend Mail::Jdec::MessagePatch
-end
+Mail::Message.prepend Mail::Jdec::MessagePatch

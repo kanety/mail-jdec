@@ -15,6 +15,4 @@ module Mail
   end
 end
 
-unless Mail::MessageIdsElement.included_modules.include?(Mail::Jdec::MessageIdsElementPatch)
-  Mail::MessageIdsElement.prepend Mail::Jdec::MessageIdsElementPatch
-end
+Mail::MessageIdsElement.prepend Mail::Jdec::MessageIdsElementPatch

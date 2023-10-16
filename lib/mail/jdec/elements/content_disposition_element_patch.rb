@@ -38,6 +38,4 @@ module Mail
   end
 end
 
-unless Mail::ContentDispositionElement.included_modules.include?(Mail::Jdec::ContentDispositionElementPatch)
-  Mail::ContentDispositionElement.prepend Mail::Jdec::ContentDispositionElementPatch
-end
+Mail::ContentDispositionElement.prepend Mail::Jdec::ContentDispositionElementPatch

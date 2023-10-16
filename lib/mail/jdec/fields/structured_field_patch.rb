@@ -11,6 +11,4 @@ module Mail
   end
 end
 
-unless Mail::StructuredField.included_modules.include?(Mail::Jdec::StructuredFieldPatch)
-  Mail::StructuredField.prepend Mail::Jdec::StructuredFieldPatch
-end
+Mail::StructuredField.prepend Mail::Jdec::StructuredFieldPatch

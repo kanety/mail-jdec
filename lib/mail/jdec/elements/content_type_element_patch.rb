@@ -33,6 +33,4 @@ module Mail
   end
 end
 
-unless Mail::ContentTypeElement.included_modules.include?(Mail::Jdec::ContentTypeElementPatch)
-  Mail::ContentTypeElement.prepend Mail::Jdec::ContentTypeElementPatch
-end
+Mail::ContentTypeElement.prepend Mail::Jdec::ContentTypeElementPatch

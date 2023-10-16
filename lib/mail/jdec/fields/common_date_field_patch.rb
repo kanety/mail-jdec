@@ -40,7 +40,5 @@ end
 
 klasses = ObjectSpace.each_object(Class).select { |klass| klass < Mail::CommonDateField }
 klasses.each do |klass|
-  unless klass.included_modules.include?(Mail::Jdec::CommonDateFieldPatch)
-    klass.prepend Mail::Jdec::CommonDateFieldPatch
-  end
+  klass.prepend Mail::Jdec::CommonDateFieldPatch
 end

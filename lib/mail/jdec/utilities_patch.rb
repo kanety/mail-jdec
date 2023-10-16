@@ -35,6 +35,4 @@ module Mail
   end
 end
 
-unless Mail::Utilities.singleton_class.included_modules.include?(Mail::Jdec::UtilitiesPatch)
-  Mail::Utilities.singleton_class.prepend Mail::Jdec::UtilitiesPatch
-end
+Mail::Utilities.singleton_class.prepend Mail::Jdec::UtilitiesPatch
