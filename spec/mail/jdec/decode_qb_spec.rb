@@ -1,6 +1,6 @@
 describe Mail::Jdec do
   before do
-    Mail::Jdec.enable
+    Mail::Jdec.enable!
   end
 
   context 'invalid Q/B encoding' do

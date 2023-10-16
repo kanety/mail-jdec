@@ -5,7 +5,7 @@ module Mail
     module UtilitiesPatch
       def pick_encoding(charset)
         if Jdec.enabled?
-          Jdec.preferred_charsets.each do |from, to|
+          Jdec.config.preferred_charsets.each do |from, to|
             if charset.to_s.downcase == from
               return Encoding.find(to)
             end

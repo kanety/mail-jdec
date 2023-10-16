@@ -1,6 +1,6 @@
 describe Mail::Jdec::Decoder do
   before do
-    Mail::Jdec.enable
+    Mail::Jdec.enable!
   end
 
   it 'decodes' do

@@ -28,7 +28,7 @@ module Mail
         end
 
         def mime_types_for_autodetect?(mime_type)
-          Jdec.mime_types_for_autodetect.any? do |type|
+          Jdec.config.mime_types_for_autodetect.any? do |type|
             if type.is_a?(Regexp)
               type.match?(mime_type)
             else

@@ -1,6 +1,6 @@
 describe Mail::Jdec do
   before do
-    Mail::Jdec.enable
+    Mail::Jdec.enable!
   end
 
   context 'no charset' do
@@ -34,7 +34,7 @@ describe Mail::Jdec do
     end
 
     it 'does not decode if disabled' do
-      Mail::Jdec.disable
+      Mail::Jdec.disable!
       mail = Mail.read("spec/fixtures/decode/iso-2022-jp.eml")
 
       expect(mail[:from].decoded).not_to include("差出人")

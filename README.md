@@ -26,10 +26,10 @@ Use mail as usual. You can enable/disable patched features as follows:
 
 ```ruby
 # disable patch
-Mail::Jdec.disable
+Mail::Jdec.disable!
 
 # enable patch
-Mail::Jdec.enable
+Mail::Jdec.enable!
 ```
 
 ## Contributing
