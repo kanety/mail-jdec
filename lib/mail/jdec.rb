@@ -25,7 +25,8 @@ module Mail
           'shift-jis' => 'cp932',
           'x_sjis' => 'cp932',
           'x-sjis' => 'cp932'
-        }
+        },
+        keep_field_order: false
       )
 
       def enabled?

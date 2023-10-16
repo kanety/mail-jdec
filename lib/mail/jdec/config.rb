@@ -3,7 +3,10 @@
 module Mail
   module Jdec
     class Config
-      CONFIGS = [:autodetect_confidence, :autodetect_skip_charsets, :mime_types_for_autodetect, :preferred_charsets]
+      CONFIGS = [
+        :autodetect_confidence, :autodetect_skip_charsets, :mime_types_for_autodetect, :preferred_charsets,
+        :keep_field_order
+      ]
       CONFIGS.each do |config|
         attr_accessor config
       end
