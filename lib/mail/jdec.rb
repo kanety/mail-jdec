@@ -10,8 +10,8 @@ end
 module Mail
   module Jdec
     class << self
-      @@enabled = true
       @@config = Config.new(
+        enabled: true,
         autodetect_confidence: 50,
         autodetect_skip_charsets: %w(),
         mime_types_for_autodetect: [%r{^text/}, 'message/delivery-status', 'message/disposition-notification'],
@@ -30,15 +30,15 @@ module Mail
       )
 
       def enabled?
-        @@enabled
+        @@config.enabled
       end
 
       def enable!
-        @@enabled = true
+        @@config.enabled = true
       end
 
       def disable!
-        @@enabled = false
+        @@config.enabled = false
       end
 
       def configure
