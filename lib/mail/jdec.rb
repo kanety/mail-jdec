@@ -29,31 +29,34 @@ module Mail
         keep_field_order: false
       )
 
-      def enabled?
-        @@config.enabled
-      end
-
-      def enable!
-        @@config.enabled = true
-      end
-
-      def disable!
-        @@config.enabled = false
-      end
-
       def configure
         yield @@config
       end
 
+      THREAD_KEY = :_mail_jdec
+
       def config
-        @@config
+        Thread.current[THREAD_KEY] || @@config
       end
 
       def with_config(hash = {})
-        Config.set_current(hash)
+        old = Thread.current[THREAD_KEY]
+        Thread.current[THREAD_KEY] = Config.new(config.attributes.merge(hash))
         yield
       ensure
-        Config.unset_current
+        Thread.current[THREAD_KEY] = old
+      end
+
+      def enabled?
+        config.enabled
+      end
+
+      def enable!
+        config.enabled = true
+      end
+
+      def disable!
+        config.enabled = false
       end
     end
   end
