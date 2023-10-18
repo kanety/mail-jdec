@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.2.0
+
+* Add current config which enables specified configs only in a block.
+* Add `keep_field_order` config.
+
 ## 1.1.2
 
 * Remove tab characters in references header.
