@@ -9,7 +9,7 @@ RSpec.describe Mail::Jdec::FieldListPatch do
     end
   end
 
-  it 'uses rfc2231 format' do
+  it 'keeps field order' do
     Mail::Jdec.with_config(keep_field_order: true) do
       mail.header['Received'] = 'Received 1'
       mail.header['Scanned'] = 'Scanned 1'
