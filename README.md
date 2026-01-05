@@ -4,7 +4,7 @@ A mail patch for decoding some improper mails.
 
 ## Dependencies
 
-* ruby 2.5+
+* ruby 3.0+
 * mail 2.9
 * charlock_holmes (using libicu)
 
