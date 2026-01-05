@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.2.1
+
+* Fix mail version to < 2.9.0.
+
 ## 1.2.0
 
 * Add current config which enables specified configs only in a block.
