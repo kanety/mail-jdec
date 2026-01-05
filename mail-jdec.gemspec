@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "mail", ">= 2.8.1"
   spec.add_dependency "charlock_holmes", ">= 0.7.0"
 
+  spec.add_development_dependency "irb"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "simplecov"
